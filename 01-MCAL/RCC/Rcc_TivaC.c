@@ -19,7 +19,7 @@
  *                 E_OK : if the function is executed correctly
  *                 E_NOT_OK : if the function is not executed correctly
  */
-Std_ReturnType RCC_EnableGpioClk(uint32_t peripheral)
+ERROR_S RCC_EnableGpioClk(uint32_t peripheral)
 {
     RCGCGPIO |= peripheral;
     return E_OK;
