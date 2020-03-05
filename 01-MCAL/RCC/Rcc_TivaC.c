@@ -1,6 +1,15 @@
+/**************************************************************************/
+/*            Author    : Kariman ,Sara ,Mira ,Hamdy ,Nafea               */
+/*            DATE      : Feb 25 2020                                     */
+/*            Version   : Version 2                                       */
+/**************************************************************************/
+
+#include "STD_TYPES.h"
 #include "Rcc_TivaC.h"
 
-#define RCGCGPIO           *((volatile uint32_t*)(0x400FE000 + 0x608))
+
+
+#define RCGCGPIO           *((volatile u32 *)(0x400FE000 + 0x608))
 
 /*
  * Function:  RCC_EnableGpioClk 
@@ -16,11 +25,19 @@
  *              RCC_GPIO_PORTF_CLK_EN : GPIO Port F Clock Enable
  * 
  *  returns: A status
- *                 E_OK : if the function is executed correctly
- *                 E_NOT_OK : if the function is not executed correctly
+ *                 ERROR_OK : if the function is executed correctly
+ *                 ERROR_NOK : if the function is not executed correctly
  */
-ERROR_S RCC_EnableGpioClk(uint32_t peripheral)
+ERROR_S RCC_EnableGpioClk(u32 peripheral)
 {
-    RCGCGPIO |= peripheral;
-    return E_OK;
+    ERROR_S ERROR_STATUS = ERROR_OK;
+
+    RCGCGPIO |= (1<<(peripheral-1));
+
+    if(!(RCGCGPIO & (1<<(peripheral-1))))
+    {
+        ERROR_STATUS = ERROR_NOK;
+    }
+
+    return ERROR_STATUS;
 }

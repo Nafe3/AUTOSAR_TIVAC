@@ -1,3 +1,9 @@
+/**************************************************************************/
+/*            Author    : Kariman ,Sara ,Mira ,Hamdy ,Nafea               */
+/*            DATE      : Feb 25 2020                                     */
+/*            Version   : Version 2                                       */
+/**************************************************************************/
+
 #ifndef STD_TYPES_H
 #define STD_TYPES_H
 
@@ -13,13 +19,14 @@ typedef  float  f32;
 typedef  double f64;
 typedef  long double f96;
 
-/*Error status*/
+/*  Error status values */
 #define ERROR_OK 								0
 #define ERROR_NOK 								1
 	
 /*Error Status Type*/
 typedef u8   ERROR_S;
 
+/* Defining NULL pointer */
 #define   NULL        ((void*)0)
 
 
